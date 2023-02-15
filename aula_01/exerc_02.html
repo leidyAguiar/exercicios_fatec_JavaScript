@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercicio 02</title>
+    <!-- 02: Implemente um script JavaScript que solicite ao usuário um número inteiro positivo. 
+      Assim que o usuário digitar um valor válido informe em uma janela de alerta se o número é ou não primo. -->
+    <script>
+      let numero = parseInt(prompt("Digite um número"));
+      var divisores = 0;
+
+      for (var count = 1; count <= numero; count++)
+        if (numero % count == 0) divisores++;
+      if (divisores == 2) {
+        document.write("É primo");
+      } else document.write("Não é primo");
+    </script>
+  </head>
+  <body></body>
+</html>

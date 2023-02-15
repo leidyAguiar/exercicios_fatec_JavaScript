@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercicio 04</title>
+    <!-- 04: Implemente um script JavaScript que solicite ao usuário um número inteiro positivo. 
+      Assim que o usuário digitar um valor válido calcule o fatorial do mesmo e exiba o resultado em uma janela de alerta. -->
+    <script>
+      let num = parseInt(prompt("Digite um número positivo"));
+      if (num >= 0) {
+        let fatorial = num;
+        if (num == 0) fatorial = 1;
+        for (let i = num - 1; i > 1; i--) {
+          fatorial = fatorial * i;
+        }
+        alert("Fatorial " + fatorial);
+      } else alert("Digite um número maior ou igual a zero");
+    </script>
+  </head>
+  <body></body>
+</html>

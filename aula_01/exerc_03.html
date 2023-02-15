@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercicio 03</title>
+    <!-- 03: Implemente um script JavaScript que solicite ao usuário um número inteiro positivo. 
+      Assim que o usuário digitar um valor válido informe em uma janela de alerta se o número é par ou ímpar. -->
+    <script>
+      let numeroInt = parseInt(prompt("Digite um número inteiro:", ""));
+      let resto = numeroInt % 2;
+
+      if (resto == 0) {
+        document.write("O número " + numeroInt + " é PAR");
+      } else document.write("O número " + numeroInt + " é IMPAR");
+    </script>
+  </head>
+  <body></body>
+</html>
