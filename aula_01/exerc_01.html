@@ -14,12 +14,12 @@
       let checaTipo = confirm("Deseja ver qual o tipo de dado foi digitado?");
 
       if (checaTipo) {
-        if (/^\d+$/.test(tipoDado)) {
+        if (/^[+-]?\d+(\.\d+)?$/.test(tipoDado)) {
           document.write("Tipo: number" + " </br>Valor: " + tipoDado);
+        } else if (tipoDado === "true" || tipoDado === "false") {
+          document.write("O dado informado é um boolean.");
         } else
-          document.write(
-            "Tipo: " + typeof tipoDado + " </br>Valor: " + tipoDado
-          );
+          document.write("Tipo: " + typeof tipoDado + " </br>Valor: " + tipoDado);
       } else document.write("Obrigado por visitar esta página");
     </script>
   </head>
