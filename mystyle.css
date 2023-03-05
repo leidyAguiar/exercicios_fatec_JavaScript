@@ -1,0 +1,18 @@
+body {
+    background-color: #e9ecef;
+    height: 50px;
+    min-width: 90%;
+    text-align: justify;
+    font-size: 18pt;
+    padding: 10px;
+    padding-top: 5%;
+}
+
+.container ul {
+    list-style-type: none;
+
+}
+
+a {
+    color: black;
+}
