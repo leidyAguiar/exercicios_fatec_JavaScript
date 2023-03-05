@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercicio 02 Relógio</title>
+    <!-- 02: Pesquise a utilização do método setTimeout() 
+      e implemente um relógio que atualize o horário a cada segundo: -->
+  </head>
+  <body>
+    <div id="relogio"></div>
+    <script>
+      function atualizaRelogio() {
+        let data = new Date();
+        let horas = today.getHours();
+        let minutos = today.getMinutes();
+        let segundos = today.getSeconds();
+        let elementBy = document.getElementById("relogio");
+
+        if (horas < 10) horas = "0" + horas;
+        if (minutos < 10) minutos = "0" + minutos;
+        if (segundos < 10) segundos = "0" + segundos;
+        
+        elementBy.innerHTML = horas + ":" + minutos + ":" + segundos;
+        setTimeout("atualizaRelogio()", 1000);
+      }
+      atualizaRelogio();
+    
+
+    </script>
+  </body>
+</html>

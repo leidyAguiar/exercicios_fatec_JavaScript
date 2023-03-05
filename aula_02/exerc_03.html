@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercicio 03</title>
+    <!-- 03: Implemente um script que leia uma palavra ou frase de um campo de texto e 
+      exiba em uma janela de alert se o texto é ou não um palíndromo. -->
+  </head>
+  <body>
+
+    <input type="text" id="campoDeTexto" />
+    <button onclick="verificarPalindromo()">Verificar</button>
+
+    <script>
+      function verificarPalindromo() {
+        const texto = document.getElementById("campoDeTexto").value;
+        const textoFormatado = texto.replace(/\s/g, "").toLowerCase();
+        const textoInvertido = textoFormatado.split("").reverse().join("");
+
+        if (textoFormatado === textoInvertido) {
+          alert(`${texto} é um palíndromo!`);
+        } else {
+          alert(`${texto} não é um palíndromo.`);
+        }
+      }
+    </script>
+  </body>
+</html>
