@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exercicio 02</title>
+  <!-- 02:Implemente um formulario HTML para input das características de um carro: marca, modelo, ano, cor, kilometragem, valor_fipe 
+      Implemente um script que armazene as características preenchidas no formulário em um objeto e que contenha, além das propriedades acima, 
+      dois métodos: anosUtilizacao() – deve retornar quantos anos de utilização o veículo possui; valorMercado() – 
+      deve retornar o valor de mercado considerando a seguinte regra: carros que rodam até 30.000 km/ano – 110% do valor_fipe 
+      carros que rodam entre 30.000 e 50.000 km/ano – 100% do valor_fipe carros que rodam mais que 50.000 km/ano – 90% do valor_fipe 
+      Preenchidos os campos os métodos criados devem ser utilizados para exibir quantos anos o veículo tem de utilização juntamente com seu valor de mercado. -->
+  <!-- import Bootstrap-->
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+</head>
+
+<body >
+  <form class="row p-4" onsubmit="calcular(event)">
+    <div class="form-group col-6">
+      <label for="marca" class="col-form-label ">Marca</label>
+      <input type="text" id="marca" name="marca" class="form-control form-control-md">
+    </div>
+    <div class="form-group col-6">
+      <label for="modelo" class="col-form-label ">Modelo</label>
+      <input type="text" id="modelo" name="modelo" class="form-control form-control-md">
+    </div>
+    <div class="form-group col-6">
+      <label for="ano" class="col-form-label ">Ano</label>
+      <input type="text" id="ano" name="ano" class="form-control form-control-md">
+    </div>
+
+    <div class="form-group col-6">
+      <label for="cor" class="col-form-label ">Cor</label>
+      <input type="text" id="cor" name="cor" class="form-control form-control-md">
+    </div>
+
+    <div class="form-group col-6">
+      <label for="kilometragem" class="col-form-label ">Kilometragem</label>
+      <input type="text" id="kilometragem" name="km" class="form-control form-control-md">
+    </div>
+    <div class="form-group col-6">
+      <label for="valor_fipe" class="col-form-label ">Valor Fipe</label>
+      <input type="text" id="valor_fipe" name="valor_fipe" class="form-control form-control-md">
+    </div>
+    <div class="form-group col-6">
+      <button  class="btn btn-primary" type="submit">Calcular</button>
+    </div>
+  </form>
+
+  <div  class="container text-center"> <p id="mostrar"></p></div>
+
+  <script>
+    function calcular(e) {
+      e.preventDefault();
+      let marca = document.getElementById("marca").value;
+      let modelo = document.getElementById("modelo").value;
+      let ano = document.getElementById("ano").value;
+      let cor = document.getElementById("cor").value;
+      let kilometragem = document.getElementById("kilometragem").value;
+      let valor_fipe = document.getElementById("valor_fipe").value;
+
+      let carro = {
+        marca,
+        modelo,
+        ano,
+        cor,
+        kilometragem,
+        valor_fipe,
+        anosUtilizacao() {
+          let anoAtual = new Date().getFullYear();
+          return anoAtual - this.ano;
+        },
+        valorMercado() {
+          if (this.kilometragem <= 30000) {
+            return this.valor_fipe * 1.1;
+          } else if (
+            this.kilometragem > 30000 && this.kilometragem <= 50000
+          ) {
+            return this.valor_fipe * 1;
+          } else {
+            return this.valor_fipe * 0.9;
+          }
+        },
+      };
+      document.getElementById("mostrar").innerHTML= `O veiculo tem ${carro.anosUtilizacao()} 
+                                                      anos de utilização e seu valor de mercado é R$ ${carro.valorMercado().toFixed(2)}`
+    }
+
+  </script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+</body>
+
+</html>

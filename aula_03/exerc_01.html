@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercicio 01</title>
+    <!-- 01: Implemente um script com um array cujos valores sejam adicionados dinamicamente pelo usuário 
+      utilizando-se formulário. A cada nova inserção exiba todos os dados cadastrados em ordem alfabética em 
+      uma lista ordenada do html. -->
+  </head>
+  <body>
+    
+    <input type="text" id="valor" />
+    <button onclick="adicionarValores()">Adicionar</button>
+    <ul id="lista"></ul>
+
+    <script>
+
+      let valores = [];
+
+      function adicionarValores() {
+        let quantidade = document.getElementById("valor").value;
+        valores.push(quantidade);
+        valores.sort();
+        console.log(valores);
+
+        let lista = document.getElementById("lista");
+        lista.innerHTML = "";
+        
+        for (let i = 0; i < valores.length; i++) {
+          let item = document.createElement("li");
+          item.innerHTML = valores[i];
+          lista.appendChild(item);
+        }
+      }
+
+    </script>
+  </body>
+</html>
