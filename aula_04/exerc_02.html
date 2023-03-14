@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercicio 02</title>
+    <!-- 02:Implemente o TODO list no qual o usuário possa:
+    • Incluir itens;
+    • Excluir itens;
+    • Reordenar itens -->
+    <!-- import Bootstrap-->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../mystyle.css">
+  </head>
+
+  <body class="container-fluid">
+    <form class="row p-4" onsubmit="incluir(event)">
+      <div class="form-group col-6">
+        <label for="tarefa" class="col-form-label">Tarefa</label>
+       <div class="d-flex" style="gap: 10px;">
+         <input
+           type="text"
+           id="tarefa"
+           name="tarefa"
+           class="form-control form-control-md"
+           required
+         />
+         <div class="form-group">
+           <button class="btn btn-primary" type="submit">Adicionar</button>
+         </div>
+       </div>
+      </div>
+    </form>
+
+    <div class="row">
+      <ul id="mostrar" class="col-6 "></ul>
+    </div>
+
+    <script>
+      function incluir(e) {
+        e.preventDefault();
+
+        let tarefa = document.getElementById("tarefa");
+        let li = document.createElement("li");
+
+        li.innerHTML = tarefa.value;
+        li.setAttribute("class", "list-group-item");
+        tarefa.value = "";
+        li.style.display = "flex";
+        li.style.justifyContent = "space-between";
+
+        let div = document.createElement("div");
+        div.setAttribute("class", "btn-group");
+
+        let btn = document.createElement("button")
+        btn.innerHTML = "Excluir";
+        btn.setAttribute("class", "btn btn-danger");
+        btn.setAttribute("onclick", "excluir(this)");
+        div.appendChild(btn);
+
+        let btn2 = document.createElement("button");
+        btn2.innerHTML = "Mover para baixo";
+        btn2.setAttribute("class", "btn btn-warning");
+        btn2.setAttribute("onclick", "moverBaixo(this)");
+        div.appendChild(btn2);
+
+        let btn3 = document.createElement("button");
+        btn3.innerHTML = "Mover para cima";
+        btn3.setAttribute("class", "btn btn-warning");
+        btn3.setAttribute("onclick", "moverCima(this)");
+        div.appendChild(btn3);
+        li.appendChild(div);
+
+        document.getElementById("mostrar").appendChild(li);
+        };
+
+      function excluir(e) {
+        e.parentNode.parentNode.remove();
+      };
+
+      function moverBaixo(e) {
+        let li = e.parentNode.parentNode;
+        let ul = e.parentNode.parentNode.parentNode;
+        let proximo = li.nextElementSibling;
+        if (proximo) {
+          ul.insertBefore(li, proximo.nextElementSibling);
+        } else {
+          ul.insertBefore(li, ul.firstChild);
+        }
+      };
+      function moverCima(e) {
+        let li = e.parentNode.parentNode;
+        let ul = e.parentNode.parentNode.parentNode;
+        let anterior = li.previousElementSibling;
+        if (anterior) {
+          ul.insertBefore(li, anterior);
+        } else {
+          ul.insertBefore(li, null);
+        }
+      };
+
+    </script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+  </body>
+</html>

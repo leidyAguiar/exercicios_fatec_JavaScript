@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exercicio 02 - Formuário de Cadastro (Professor/Aluno)</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+</head>
+
+<body>
+  <form id="formularioDeCadastro" class="row p-4" onsubmit="exibir(event)">
+    <div class="container-fluid">
+      <div class="row">
+
+        <div class="col-12 text-center">
+          <h2>Formulário de Cadastro</h2>
+        </div>
+       
+        <div class="form-group col-6">
+          <label for="nome" class="col-form-label ">Nome:</label>
+          <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" class="form-control form-control-md" required value="Leidiane Cunha"> <!--Depois tirar o value-->
+        </div>
+        <div class="form-group col-6">
+          <label for="email" class="col-form-label ">Email:</label>
+          <input type="text" id="email" name="email" placeholder="fulano.com" class="form-control form-control-md" required required value="leidiane@gmail.com"> <!--Depois tirar o value-->
+        </div>
+        <div class="form-group col-3">
+          <label for="dataNascimento" class="col-form-label ">Data Nascimento:</label>
+          <input type="date" name="dataNascimento" id="dataNascimento" class="form-control form-control-md" required>
+        </div>
+        <div class="col-3 d-flex flex-column justify-content-center">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="tipoCadastro" id="professor" value="professor" onchange="mudarTipoCadastro()" checked>
+            <label class="form-check-label" for="professor"> 
+              Professor 
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="tipoCadastro" id="aluno" value="aluno" onchange="mudarTipoCadastro()">
+            <label class="form-check-label" for="aluno">
+              Aluno
+            </label>
+          </div>
+        </div>
+        <div class="form-group col-6">
+          <label for="telefoneFixo" class="col-form-label ">Telefone Fixo:</label>
+          <input type="text" id="telefoneFixo" name="telefoneFixo" placeholder="(99)9999-9999" class="form-control form-control-md" required value="999999999"> <!--Depois tirar o value-->
+        </div>
+        <div class="form-group col-6">
+          <label for="telefoneCelular" class="col-form-label ">Telefone Celular:</label>
+          <input type="text" id="telefoneCelular" name="telefoneCelular" placeholder="(99)99999-9999" class="form-control form-control-md" required value="999999999"> <!--Depois tirar o value-->
+        </div>  
+        <div class="form-group col-6 professor" >
+          <label for="area" class="col-form-label ">Área:</label>
+          <input type="text" id="area" name="area" placeholder="Digite sua área de atuação" class="form-control form-control-md" required value="professora de matemática"> <!--Depois tirar o value-->
+        </div>
+        <div class="form-group col-6 ">
+          <label for="matricula" class="col-form-label ">Matrícula:</label>
+          <input type="text" id="matricula" name="matricula" placeholder="Digite sua matrícula" class="form-control form-control-md" required value="123456"> <!--Depois tirar o value-->
+        </div>
+        <div class="form-group col-6 aluno">
+          <label for="curso" class="col-form-label ">Curso:</label>
+          <input type="text" id="curso" name="curso" placeholder="Digite seu curso" class="form-control form-control-md" required value="leidiane@lattes.com"> <!--Depois tirar o value-->
+        </div>
+        <div class="form-group col-6 professor">
+          <label for="lattes" class="col-form-label ">Lattes:</label>
+          <input type="text" id="lattes" name="lattes" placeholder="Digite aqui o endereço para seu Lattes" class="form-control form-control-md" required value="leidiane@lattes.com"> <!--Depois tirar o value-->
+        </div>
+        <div class="col-12 d-flex form-group justify-content-center" style="gap: 5px;">
+          <button  class="btn btn-primary" type="submit">Enviar</button>
+          <button  class="btn btn-primary" type="reset">Redefinir</button>
+        </div>
+      </div>
+
+    </div>
+  </form>
+
+  <div  class="container text-center"> <p id="exibir"></p></div>
+
+  <script>
+    function mudarTipoCadastro() {
+      let tipoCadastro = document.querySelector('input[name="tipoCadastro"]:checked').value;
+      let area = document.querySelector('#area');
+      let lattes = document.querySelector('#lattes');
+      let curso = document.querySelector('#curso');
+      let professores = document.getElementsByClassName('professor');
+      let alunos = document.getElementsByClassName('aluno');
+
+      if (tipoCadastro == 'professor') {
+        for (let i = 0; i < professores.length; i++) {
+          professores[i].style.display = 'block';
+        }
+        for (let i = 0; i < alunos.length; i++) {
+          alunos[i].style.display = 'none';
+        }
+        area.required = true;
+        lattes.required = true;
+        curso.required = false;
+      } else {
+        for (let i = 0; i < professores.length; i++) {
+          professores[i].style.display = 'none';
+        }
+        for (let i = 0; i < alunos.length; i++) {
+          alunos[i].style.display = 'block';
+        }
+        area.required = false;
+        lattes.required = false;
+        curso.required = true;
+      }
+    }
+    mudarTipoCadastro();
+    function exibir(e){
+      e.preventDefault();
+      let nome = document.querySelector('#nome').value;
+      let email = document.querySelector('#email').value;
+      let dataNascimento = document.querySelector('#dataNascimento').value;
+      let telefoneFixo = document.querySelector('#telefoneFixo').value;
+      let telefoneCelular = document.querySelector('#telefoneCelular').value;
+      let area = document.querySelector('#area').value;
+      let matricula = document.querySelector('#matricula').value;
+      let curso = document.querySelector('#curso').value;
+      let lattes = document.querySelector('#lattes').value;
+      let tipoCadastro = document.querySelector('input[name="tipoCadastro"]:checked').value;
+      let exibir = document.querySelector('#exibir');
+      let texto = '';
+      if(tipoCadastro == 'professor'){
+        texto = `Nome: ${nome} <br> Email: ${email} <br> Data de Nascimento: ${dataNascimento} <br> Telefone Fixo: ${telefoneFixo} <br> Telefone Celular: ${telefoneCelular} <br> Área: ${area} <br> Matrícula: ${matricula} <br> Lattes: ${lattes}`;
+      }else{
+        texto = `Nome: ${nome} <br> Email: ${email} <br> Data de Nascimento: ${dataNascimento} <br> Telefone Fixo: ${telefoneFixo} <br> Telefone Celular: ${telefoneCelular} <br> Curso: ${curso} <br> Matrícula: ${matricula}`;
+      }
+      exibir.innerHTML = texto;
+    }
+      
+  </script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+</body>
+
+</html>
